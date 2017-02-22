@@ -18,7 +18,18 @@ var ENV = process.env.npm_lifecycle_event;
 var isTest = ENV === 'test' || ENV === 'test-watch';
 var isProd = ENV === 'build';
 
-console.log("==============================" + ENV + "==============================");
+function isExternal(module) {
+  var userRequest = module.userRequest;
+
+  if (typeof userRequest !== 'string') {
+    return false;
+  }
+
+  return userRequest.indexOf('bower_components') >= 0 ||
+    userRequest.indexOf('node_modules') >= 0 ||
+    userRequest.indexOf('libraries') >= 0;
+}
+
 module.exports = {
   module: {
     loaders: [
@@ -49,8 +60,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
+        loader: 'babel-loader'
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/,
@@ -90,9 +100,11 @@ module.exports = {
  * Should be an empty object if it's generating a test build
  * Karma will set this when it's a test build
  */
-module.exports.entry = isTest ? {} : {
-  'origin-web-catalogs': isProd ? './src/index.ts' : './app/app.ts'
-};
+module.exports.entry = isTest ? {} :
+  {
+    'origin-web-catalogs': './src/index.ts',
+    vendor: ['angular', 'angular-animate', 'angular-patternfly', 'bootstrap', 'jquery']
+  };
 
 /**
  * Output
@@ -102,7 +114,7 @@ module.exports.entry = isTest ? {} : {
  */
 module.exports.output = isTest ? {} : {
   // Absolute output directory
-  path: isProd ? __dirname + '/dist' : __dirname + '/test-app',
+  path: __dirname + '/dist',
 
   // Output path from the view of the page
   // Uses webpack-dev-server in development
@@ -119,7 +131,6 @@ module.exports.output = isTest ? {} : {
   chunkFilename: isProd ? '[name].js' : '[name].bundle.js'
 };
 
-console.dir(module.exports.output);
 /**
  * Devtool
  * Reference: http://webpack.github.io/docs/configuration.html#devtool
@@ -158,21 +169,15 @@ module.exports.plugins = [
   new ngAnnotatePlugin({
     add: true
   }),
+  new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.bundle.js'}),
   new webpack.ProvidePlugin({
     jQuery: 'jquery',
     $: 'jquery',
-    jquery: 'jquery'
+    jquery: 'jquery',
+    logger: 'logger',
+    Logger: 'logger'
   })
 ];
-
-if (!isProd) {
-  module.exports.plugins.push(
-    new HtmlWebpackPlugin({
-      template: './app/index.html',
-      inject: 'body'
-    })
-  );
-}
 
 // Add build specific plugins
 if (isProd) {
