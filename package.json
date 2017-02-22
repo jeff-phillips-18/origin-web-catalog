@@ -6,14 +6,12 @@
     "clean": "rimraf dist && rimraf docs && rimraf coverage",
     "build": "rimraf dist && webpack --bail --progress --profile",
     "build:run": "npm run build && live-server --port=3001 --open=dist/",
-    "server": "webpack-dev-server --history-api-fallback --inline --progress",
     "coverage": "live-server --port=3001 --open=coverage/",
     "test": "karma start",
     "test:coverage": "npm run test && npm run coverage",
     "test:watch": "karma start --auto-watch --no-single-run",
     "docs": "jsdoc src/app -r -d docs",
-    "docs:launch": "npm run docs && live-server --port=3002 --open=docs/",
-    "start": "npm run server"
+    "docs:launch": "npm run docs && live-server --port=3002 --open=docs/"
   },
   "repository": {
     "type": "git",
@@ -35,6 +33,7 @@
     "angular-ui-bootstrap": "0.14.x",
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.1",
+    "origin-web-common": "^0.0.1",
     "paper-css": "^0.1.2",
     "patternfly": "3.20.0",
     "jquery": "~2.1.4"
