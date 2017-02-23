@@ -1,0 +1,50 @@
+<!doctype html>
+<html class="layout-pf layout-pf-fixed">
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <title>Openshift Catalog Components</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" type="image/png" href="app/assets/img/favicon.ico" />
+
+    <!-- bower:css -->
+    <!-- endbower -->
+
+    <link rel="stylesheet" href="./styles/appstyles.css" />
+
+    <!-- ES6/ES6 shim -->
+    <!--[if IE 8]>
+    <script src="../bower_components/es5-dom-shim/__COMIPLE/a.ie8.js"></script>
+    <![endif]-->
+    <script src="../bower_components/es5-dom-shim/__COMPILE/a.js"></script>
+
+    <!-- bower:js -->
+    <!-- endbower -->
+
+  </head>
+
+  <body ng-app="catalogApp" class="cards-pf ng-cloak">
+    <div >
+      <navigation></navigation>
+      <div id="centralPanel" class="container-pf-nav-pf-vertical container-pf-nav-pf-vertical-with-tertiary">
+        <div class="pf-framework-content">
+          <main ng-view class="pf-framework-view">
+            <ui-view></ui-view>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- add any scripts under dist/ here -->
+    <script src="./origin-web-catalog.js"></script>
+    <script src="./catalogApp.js"></script>
+
+    <script id="__bs_script__">
+    //<![CDATA[
+    document.write("<script async src='http://HOST:3001/browser-sync/browser-sync-client.js?v=2.18.8'><\/script>".replace("HOST", location.hostname));
+    //]]>
+    </script>
+
+  </body>
+</html>

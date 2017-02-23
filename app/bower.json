@@ -1,0 +1,72 @@
+{
+  "name": "origin-web-catalog",
+  "version": "0.0.1",
+  "main": [
+    "dist/origin-web-catalogs.js",
+    "dist/origin-web-catalogs.css"
+  ],
+  "dependencies": {
+    "angular": "1.5.11",
+    "angular-resource": "1.5.11",
+    "angular-sanitize": "1.5.11",
+    "angular-route": "1.5.11",
+    "angular-bootstrap": "0.14.3",
+    "angular-patternfly": "3.20.0",
+    "patternfly": "3.20.0",
+    "jquery": "2.1.4",
+    "lodash": "3.10.1"
+  },
+  "devDependencies": {
+    "uri.js": "1.18.0",
+    "moment": "2.14.2",
+    "moment-timezone": "0.5.3",
+    "hawtio-core": "2.0.37",
+    "hawtio-core-dts": "~2.0.0",
+    "hawtio-extension-service": "2.0.2",
+    "hawtio-utilities": "~2.0.0",
+    "sifter": "0.4.1",
+    "microplugin": "0.0.3",
+    "selectize": "0.12.1",
+    "messenger": "1.4.1",
+    "kubernetes-label-selector": "1.4.2",
+    "kubernetes-topology-graph": "0.0.23",
+    "kubernetes-container-terminal": "1.0.3",
+    "registry-image-widgets": "0.0.2",
+    "openshift-object-describer": "1.1.4",
+    "layout.attrs": "2.1.1",
+    "bootstrap-hover-dropdown": "2.1.3",
+    "angular-ui-ace": "0.2.3",
+    "ace-builds": "1.2.2",
+    "clipboard": "1.5.8",
+    "ansi_up": "1.3.0",
+    "angular-extension-registry": "1.2.6",
+    "ng-sortable": "1.3.4",
+    "ui-select": "angular-ui-select#0.19.4",
+    "matchHeight": "0.7.0",
+    "angular-key-value-editor": "3.0.0",
+    "angular-inview": "1.5.7",
+    "js-yaml": "3.6.1",
+    "angular-moment": "1.0.0",
+    "angular-utf8-base64": "0.0.5",
+    "file-saver": "1.3.3",
+    "origin-web-common": "0.0.1"
+  },
+  "appPath": "app",
+  "resolutions": {
+    "angular-bootstrap": "0.14.3",
+    "d3": "3.5.17"
+  },
+  "overrides": {
+    "angular": {
+      "dependencies": {
+        "jquery": "2.1.4"
+      }
+    },
+    "angular-patternfly": {
+      "main": [
+        "dist/styles/angular-patternfly.css",
+        "dist/angular-patternfly.js"
+      ]
+    }
+  }
+}
