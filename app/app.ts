@@ -24,6 +24,15 @@ require('../node_modules/angular-patternfly/node_modules/angular-sanitize/angula
 require('../node_modules/angular-drag-and-drop-lists/angular-drag-and-drop-lists.min.js');
 require('../node_modules/angular-animate/angular-animate.min.js');
 
+require('../node_modules/jquery/dist/jquery');
+require('../bower_components/js-logger/src/logger');
+require('../bower_components/hawtio-core/dist/hawtio-core');
+require('../bower_components/hawtio-extension-service/dist/hawtio-extension-service');
+require('../bower_components/term.js/src/term');
+require('../bower_components/kubernetes-container-terminal/dist/container-terminal');
+
+require('../node_modules/origin-web-common/dist/origin-web-common');
+
 angular
   .module(catalogApp, ['webCatalog', 'ui.router'])
   .config(routesConfig)
