@@ -7,6 +7,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
+
 var path = require('path');
 
 /**
@@ -25,7 +26,7 @@ module.exports = {
     //'vendor': './src/vendor.ts',
     'catalogs-app': './app/app.ts',
     'origin-web-catalogs': './src/index.ts',
-    'vendor-bundle': ['angular', 'angular-animate', 'angular-patternfly', 'bootstrap', 'jquery']
+    'vendor-bundle': ['angular', 'angular-animate', 'angular-patternfly', 'bootstrap', 'jquery', 'lodash']
   },
 
   module: {
@@ -131,7 +132,8 @@ module.exports.plugins = [
   new webpack.ProvidePlugin({
     jQuery: 'jquery',
     $: 'jquery',
-    jquery: 'jquery'
+    jquery: 'jquery',
+    '_': 'lodash'
   })
 ];
 
@@ -161,8 +163,11 @@ module.exports.resolve = {
     '.web.js',
     '.js',
     '.ts'
-  ]
+  ],
+  modules: ["node_modules", "bower_components"],
+  descriptionFiles: ["package.json", "bower.json"]
 };
+
 
 // turn off performance warnings
 module.exports.performance = { hints: false };
