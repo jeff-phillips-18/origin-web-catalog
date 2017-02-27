@@ -90,6 +90,19 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'html-loader'
+      },
+      {
+        test: /hawtio-core/,
+        loaders: ['imports-loader?Logger=js-logger/src/logger,angular,this=>window',
+                  'exports-loader?hawtioPluginLoader']
+      },
+      {
+        test: /origin-web-common/,
+        loader: 'imports-loader?Logger=js-logger/src/logger,hawtioPluginLoader=hawtio-core/dist/hawtio-core,angular,URI=urijs/src/URI,this=>window'
+      },
+      {
+        test: /container-terminal/,
+        loader: 'imports-loader?angular,this=>window,define=>false,term=term.js/src/term'
       }
     ]
   }
@@ -133,7 +146,10 @@ module.exports.plugins = [
     jQuery: 'jquery',
     $: 'jquery',
     jquery: 'jquery',
-    '_': 'lodash'
+    '_': 'lodash',
+    'hawtioPluginLoader': 'hawtioPluginLoader',
+    'URI': 'URI',
+    'OPENSHIFT_CONFIG': 'OPENSHIFT_CONFIG'
   })
 ];
 

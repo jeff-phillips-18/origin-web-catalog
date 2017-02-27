@@ -7,10 +7,74 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="icon" type="image/png" href="app/assets/img/favicon.ico" />
+    <script>
+      window.OPENSHIFT_CONFIG = JSON.parse(`{
+        "apis":{
+        "hostPort":"localhost:8443",
+          "prefix":"/apis",
+          "groups":{
+
+        },
+        "API_DISCOVERY_ERRORS":[
+          {
+            "data":{
+              "readyState":0,
+              "status":0,
+              "statusText":"error"
+            },
+            "textStatus":"error",
+            "xhr":""
+          },
+          {
+            "data":{
+              "readyState":0,
+              "status":0,
+              "statusText":"error"
+            },
+            "textStatus":"error",
+            "xhr":""
+          },
+          {
+            "data":{
+              "readyState":0,
+              "status":0,
+              "statusText":"error"
+            },
+            "textStatus":"error",
+            "xhr":""
+          }
+        ]
+      },
+        "api":{
+        "openshift":{
+          "hostPort":"localhost:8443",
+            "prefix":"/oapi",
+            "resources":{
+
+          }
+        },
+        "k8s":{
+          "hostPort":"localhost:8443",
+            "prefix":"/api",
+            "resources":{
+
+          }
+        }
+      },
+        "auth":{
+        "oauth_authorize_uri":"https://localhost:8443/oauth/authorize",
+          "oauth_redirect_base":"https://localhost:9000/dev-console",
+          "oauth_client_id":"openshift-web-console",
+          "logout_uri":""
+      },
+        "loggingURL":"",
+        "metricsURL":""
+      }`);
+    </script>
   </head>
 
   <body ng-app="catalogApp" class="cards-pf ng-cloak">
-    <div >
+    <div>
       <navigation></navigation>
       <div id="centralPanel" class="container-pf-nav-pf-vertical container-pf-nav-pf-vertical-with-tertiary">
         <div class="pf-framework-content">
