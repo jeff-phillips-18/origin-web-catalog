@@ -25,15 +25,16 @@ require('angular-drag-and-drop-lists/angular-drag-and-drop-lists.min.js');
 require('angular-animate/angular-animate.min.js');
 
 require('jquery/dist/jquery');
-// require('js-logger/src/logger');
-// require('../bower_components/hawtio-core/dist/hawtio-core');
-// require('../bower_components/hawtio-extension-service/dist/hawtio-extension-service');
-// require('../bower_components/term.js/src/term');
-
-// require('origin-web-common/dist/origin-web-common');
+require('imports-loader?define=>false!js-logger/src/logger');
+require('hawtio-core/dist/hawtio-core');
+require('term.js/src/term');
+require('kubernetes-container-terminal/dist/container-terminal');
+require('urijs/src/URI');
+require('angular-utf8-base64');
+require('origin-web-common/dist/origin-web-common.js');
 
 angular
-  .module(catalogApp, ['webCatalog', /* 'openshiftCommon', */ 'ui.router', 'patternfly'])
+  .module(catalogApp, ['webCatalog', 'openshiftCommon', 'ui.router', 'patternfly'])
   .config(routesConfig)
   .service('MockDataService', MockDataService)
   .component('servicespage', servicesPage)
