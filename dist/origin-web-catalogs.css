@@ -342,6 +342,7 @@ body.overlay-open {
 }
 .catalogs-overlay-panel {
   background: #fff;
+  color: #363636;
   border: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   margin: 0 auto;
@@ -506,6 +507,17 @@ body.overlay-open {
 .catalog-projects-spinner-container {
   padding-top: 60px;
   padding-bottom: 60px;
+}
+.services-view .services-item {
+  color: #fff;
+  flex: 0 1 33%;
+  padding-left: 0px;
+}
+.services-view .services-items-inner {
+  background-image: none;
+}
+.services-view .services-items-inner-shadow-covers {
+  background-image: none;
 }
 .catalog-projects-summary-modal-backrop.modal-backdrop {
   background-color: transparent;
