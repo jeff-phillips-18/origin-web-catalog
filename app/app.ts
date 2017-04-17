@@ -21,6 +21,7 @@ let hawtioPluginLoader = require('hawtio-core/dist/hawtio-core');
 require('urijs');
 require('urijs/src/URITemplate.js');
 require('angular-utf8-base64');
+require('hopscotch/dist/js/hopscotch.js');
 
 try {
   require('./config.local.js');
