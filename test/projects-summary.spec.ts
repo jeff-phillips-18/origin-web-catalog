@@ -65,7 +65,7 @@ describe('Projects Summary Panel', () => {
       'service-classes="services" ' +
       'image-streams="images" ' +
       'view-edit-membership="testViewMembership" ' +
-      'start-getting-started-tour="testShowTour">' +
+      'start-tour="testShowTour">' +
       '</projects-summary>';
 
     componentTest = new ComponentTest<ProjectsSummaryController>(projectsSummaryHtml);
@@ -132,7 +132,7 @@ describe('Projects Summary Panel', () => {
 
     var ctrl = componentTest.isoScope.$ctrl;
     expect(ctrl.viewEditMembership()).toBe(testViewMembership);
-    expect(ctrl.startGettingStartedTour()).toBe(testShowTour);
+    expect(ctrl.startTour()).toBe(testShowTour);
   });
 
   it('should show the create button when allowed', () => {

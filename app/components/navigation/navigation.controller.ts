@@ -1,7 +1,7 @@
 import * as angular from 'angular';
 
 export class NavigationController implements angular.IController {
-  static $inject = ['$transitions', '$rootScope', '$state'];
+  static $inject = ['$transitions', '$rootScope', '$state', '$timeout', 'Constants', 'GuidedTourService'];
 
   public ctrl: any = this;
   public navigationItems: any;
@@ -10,12 +10,17 @@ export class NavigationController implements angular.IController {
   private $transitions: any;
   private $rootScope: any;
   private $state: any;
+  private $timeout: any;
+  private Constants: any;
+  private GuidedTourService: any;
 
-
-  constructor($transitions: any, $rootScope: any, $state: any) {
+  constructor($transitions: any, $rootScope: any, $state: any, $timeout: any, Constants: any, GuidedTourService: any) {
     this.$transitions = $transitions;
     this.$rootScope = $rootScope;
     this.$state = $state;
+    this.$timeout = $timeout;
+    this.Constants = Constants;
+    this.GuidedTourService = GuidedTourService;
   };
 
   public $onInit() {
@@ -70,5 +75,15 @@ export class NavigationController implements angular.IController {
 
   public $doCheck() {
     return;
+  }
+
+  public startTour() {
+    this.$state.go('home');
+    this.$timeout(() => {
+      let tourConfig = this.Constants.LANDING_PAGE_TOUR_STEPS;
+      if (tourConfig && tourConfig.steps) {
+        this.GuidedTourService.startTour(tourConfig);
+      }
+    }, 500);
   }
 }

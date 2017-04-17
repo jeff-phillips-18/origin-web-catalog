@@ -210,7 +210,7 @@ export class ProjectsSummaryController implements angular.IController {
   };
 
   public handleGettingStartedClick() {
-    var cb: any = this.ctrl.startGettingStartedTour();
+    var cb: any = this.ctrl.startTour();
     if (cb) {
       cb();
     }

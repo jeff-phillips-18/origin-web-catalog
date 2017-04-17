@@ -1,18 +1,25 @@
+
 export class HomePageController {
-  static $inject = ['$state', 'AuthService', 'Logger', 'Constants', 'DataService'];
+  static $inject = ['$state', '$element', '$timeout', 'AuthService', 'Logger', 'Constants', 'DataService', 'GuidedTourService'];
 
   public ctrl: any = this;
   private $state: any;
+  private $element: any;
+  private $timeout: any;
   private authService: any;
+  private GuidedTourService: any;
   private logger: any;
   private constants: any;
   private dataService: any;
   private Logger: any;
 
-  constructor($state: any, AuthService: any, Logger: any, Constants: any, DataService: any) {
+  constructor($state: any, $element: any, $timeout: any, AuthService: any, Logger: any, Constants: any, DataService: any, GuidedTourService: any) {
     this.$state = $state;
+    this.$element = $element;
+    this.$timeout = $timeout;
     this.authService = AuthService;
     this.logger = Logger;
+    this.GuidedTourService = GuidedTourService;
     this.constants = Constants;
     this.dataService = DataService;
     this.Logger = Logger;
@@ -59,5 +66,12 @@ export class HomePageController {
 
   public navToProjects = () => {
     this.$state.go('projects');
+  };
+
+  public startGuidedTour = () => {
+    let tourConfig = this.constants.LANDING_PAGE_TOUR_STEPS;
+    if (tourConfig && tourConfig.steps) {
+      this.GuidedTourService.startTour(tourConfig);
+    }
   };
 }

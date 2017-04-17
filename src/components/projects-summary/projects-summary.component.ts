@@ -7,7 +7,7 @@ export const projectsSummary: angular.IComponentOptions = {
     baseProjectUrl: '@',
     projectsUrl: '@',
     viewEditMembership: '&',
-    startGettingStartedTour: '&'
+    startTour: '&'
   },
   controller: ProjectsSummaryController,
   template: require('./projects-summary.html')
