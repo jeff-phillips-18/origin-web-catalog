@@ -33,7 +33,17 @@
     &:hover {
       text-decoration: none;
       .services-item-icon:after {
-        border: 2px solid @link-color;
+        border-color: @link-color;
+      }
+
+      .services-item-name {
+        color: @link-color;
+      }
+    }
+
+    .services-item-icon {
+      &:after {
+        border: 2px solid transparent;
         border-radius: 100px;
         content: "";
         height: 90px;
@@ -41,11 +51,16 @@
         position: absolute;
         left: 50%;
         top: 50%;
+        transition: border-color 100ms linear;
         width: 90px;
+        will-change: border-color;
       }
 
-      .services-item-name {
-        color: @link-color;
+      .font-icon,
+      .fa,
+      img {
+        // position above background
+        z-index: 1;
       }
     }
 

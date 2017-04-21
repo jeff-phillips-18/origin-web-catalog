@@ -76,17 +76,35 @@
     a {
       color: @color-pf-white;
       &:hover {
-        color: @link-color;
-        text-decoration: underline;
+        color: @landing-side-bar-link-color-hover;
+        text-decoration: none;
       }
     }
   }
 
   .services-view {
     .services-item {
-      color: @color-pf-white;
       flex: 0 1 33%;
-      padding-left: 0px;
+      padding-left: 0;
+      padding-right: 0;
+      &:focus,
+      &:hover {
+        color: @landing-side-bar-link-color-hover;
+        .services-item-name {
+          color: @landing-side-bar-link-color-hover;
+        }
+      }
+      .services-item-icon {
+        color: @text-color;
+        &:after {
+          background: @color-pf-white;
+          border-color: @landing-side-bar-bg;
+        }
+      }
+      .services-item-name {
+        color: @color-pf-white;
+        font-weight: 300;
+      }
     }
     .services-items-inner {
       background-image: none;
@@ -250,6 +268,14 @@
     line-height: 1.6;
     margin-bottom: 0;
     margin-top: 0;
+    a {
+      color: @landing-side-bar-link-color;
+      &:focus,
+      &:hover {
+        color: @landing-side-bar-link-color-hover;
+        text-decoration: none;
+      }
+    }
   }
 
   .project-title {

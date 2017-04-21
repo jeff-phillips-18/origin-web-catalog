@@ -16,22 +16,22 @@
 }
 @keyframes modalSlideDown {
   0% {
-    margin-top: -25%;
-    opacity: .5;
+    opacity: .75;
+    transform: translateY(-50px);
   }
   100% {
-    margin-top: 0%;
     opacity: 1;
+    transform: translateY(0);
   }
 }
 @keyframes modalSlideUp {
   0% {
-    margin-top: 0%;
-    opacity: 0.5;
+    opacity: .5;
+    transform: translateY(0%);
   }
   100% {
-    margin-top: -25%;
     opacity: 0;
+    transform: translateY(-50px);
   }
 }
 .catalog-search-match .catalog-search-match-info {
@@ -169,12 +169,6 @@
   .landing-side-bar {
     width: 425px;
   }
-}
-.landing-side-bar a {
-  color: #39a5dc;
-}
-.landing-side-bar a:hover {
-  color: #228bc0;
 }
 .order-service-details {
   flex: 0 1 auto;
@@ -434,7 +428,7 @@ body.overlay-open {
   animation: modalSlideDown 0.3s ease-out forwards;
 }
 .catalogs-overlay-panel-wrapper.ng-leave {
-  animation: modalSlideUp 0.3s ease-out forwards;
+  animation: modalSlideUp 0.2s ease-out forwards;
 }
 .catalog-projects-summary-panel {
   padding: 20px;
@@ -504,13 +498,32 @@ body.overlay-open {
   color: #fff;
 }
 .catalog-projects-summary-panel .summary-title a:hover {
-  color: #0088ce;
-  text-decoration: underline;
+  color: #64b9e4;
+  text-decoration: none;
 }
 .catalog-projects-summary-panel .services-view .services-item {
-  color: #fff;
   flex: 0 1 33%;
-  padding-left: 0px;
+  padding-left: 0;
+  padding-right: 0;
+}
+.catalog-projects-summary-panel .services-view .services-item:focus,
+.catalog-projects-summary-panel .services-view .services-item:hover {
+  color: #64b9e4;
+}
+.catalog-projects-summary-panel .services-view .services-item:focus .services-item-name,
+.catalog-projects-summary-panel .services-view .services-item:hover .services-item-name {
+  color: #64b9e4;
+}
+.catalog-projects-summary-panel .services-view .services-item .services-item-icon {
+  color: #363636;
+}
+.catalog-projects-summary-panel .services-view .services-item .services-item-icon:after {
+  background: #fff;
+  border-color: #2C343D;
+}
+.catalog-projects-summary-panel .services-view .services-item .services-item-name {
+  color: #fff;
+  font-weight: 300;
 }
 .catalog-projects-summary-panel .services-view .services-items-inner {
   background-image: none;
@@ -650,6 +663,14 @@ body.overlay-open {
   line-height: 1.6;
   margin-bottom: 0;
   margin-top: 0;
+}
+.catalog-project-summary-list .project-tile-header a {
+  color: #39a5dc;
+}
+.catalog-project-summary-list .project-tile-header a:focus,
+.catalog-project-summary-list .project-tile-header a:hover {
+  color: #64b9e4;
+  text-decoration: none;
 }
 .catalog-project-summary-list .project-title {
   overflow: hidden;
@@ -826,7 +847,14 @@ body.overlay-open {
 }
 .services-view .services-item:focus .services-item-icon:after,
 .services-view .services-item:hover .services-item-icon:after {
-  border: 2px solid #0088ce;
+  border-color: #0088ce;
+}
+.services-view .services-item:focus .services-item-name,
+.services-view .services-item:hover .services-item-name {
+  color: #0088ce;
+}
+.services-view .services-item .services-item-icon:after {
+  border: 2px solid transparent;
   border-radius: 100px;
   content: "";
   height: 90px;
@@ -834,11 +862,14 @@ body.overlay-open {
   position: absolute;
   left: 50%;
   top: 50%;
+  transition: border-color 100ms linear;
   width: 90px;
+  will-change: border-color;
 }
-.services-view .services-item:focus .services-item-name,
-.services-view .services-item:hover .services-item-name {
-  color: #0088ce;
+.services-view .services-item .services-item-icon .font-icon,
+.services-view .services-item .services-item-icon .fa,
+.services-view .services-item .services-item-icon img {
+  z-index: 1;
 }
 .services-view .services-item .fa-cubes {
   position: relative;
