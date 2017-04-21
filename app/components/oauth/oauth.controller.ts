@@ -4,7 +4,7 @@ import * as angular from 'angular';
 let URI = require('urijs');
 
 export class OAuthController implements angular.IController {
-  static $inject = ['$location', '$q', 'RedirectLoginService', 'DataService', 'AuthService', 'Logger', '$window'];
+  static $inject = ['$location', '$q', 'RedirectLoginService', 'DataService', 'AuthService', 'Logger', '$timeout', 'Constants', 'GuidedTourService'];
 
   public ctrl: any = this;
 
@@ -14,17 +14,23 @@ export class OAuthController implements angular.IController {
   private DataService: any;
   private AuthService: any;
   private Logger: any;
+  private $timeout: any;
+  private Constants: any;
+  private GuidedTourService: any;
 
   private doCompleteLogin: any;
   private authLogger: any;
 
-  constructor($location: any, $q: any, RedirectLoginService: any, DataService: any, AuthService: any, Logger: any, $window: any) {
+  constructor($location: any, $q: any, RedirectLoginService: any, DataService: any, AuthService: any, Logger: any, $timeout: any, Constants: any, GuidedTourService: any) {
     this.$location = $location;
     this.$q = $q;
     this.RedirectLoginService = RedirectLoginService;
     this.DataService = DataService;
     this.AuthService = AuthService;
     this.Logger = Logger;
+    this.$timeout = $timeout;
+    this.Constants = Constants;
+    this.GuidedTourService = GuidedTourService;
 
     // initialize to a no-op function.
     this.doCompleteLogin = function() {
@@ -56,15 +62,31 @@ export class OAuthController implements angular.IController {
               // persist the user
               _this.AuthService.setUser(user, token, ttl);
 
-              // redirect to original destination (or default to './')
-              var destination = then || './';
-              if (URI(destination).is('absolute')) {
-                _this.authLogger.log('OAuthController, invalid absolute redirect', destination);
-                destination = './';
+              // Check if this is the first time this user has logged in, if so launch the tour
+              var loggedInKey: string = "hasLoggedIn/" + user.metadata.name;
+              var hasLoggedIn: boolean = localStorage.getItem(loggedInKey) === 'true';
+
+              if (hasLoggedIn) {
+                // redirect to original destination (or default to './')
+                var destination = then || './';
+                if (URI(destination).is('absolute')) {
+                  _this.authLogger.log('OAuthController, invalid absolute redirect', destination);
+                  destination = './';
+                }
+                _this.authLogger.log('OAuthController, redirecting', destination);
+                _this.$location.replace();
+                _this.$location.url(destination);
+              } else {
+                localStorage.setItem(loggedInKey, 'true');
+                _this.$location.replace();
+                _this.$location.url('./');
+                this.$timeout(function() {
+                  let tourConfig = _this.Constants.LANDING_PAGE_TOUR_STEPS;
+                  if (tourConfig && tourConfig.steps) {
+                    _this.GuidedTourService.startTour(tourConfig);
+                  }
+                }, 500);
               }
-              _this.authLogger.log('OAuthController, redirecting', destination);
-              _this.$location.replace();
-              _this.$location.url(destination);
             };
 
             if (verified) {
@@ -103,6 +125,7 @@ export class OAuthController implements angular.IController {
   }
 
   public completeLogin() {
+    console.log("Logged in");
     this.doCompleteLogin();
   }
 
