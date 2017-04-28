@@ -27,6 +27,19 @@
   }
 }
 
+.showcase-app {
+  .landing {
+    @media (min-width: @screen-sm-min) {
+      top: @landing-offset-top;
+    }
+  }
+  .catalog-search, .landing-side-bar {
+    @media (min-width: @screen-sm-min) {
+      top: @navbar-height;
+    }
+  }
+}
+
 .main-container {
   padding: 0 (@grid-gutter-width / 2);
 }
