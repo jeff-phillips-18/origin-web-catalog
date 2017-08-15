@@ -28,20 +28,6 @@ export class LandingPageController implements angular.IController {
       this.ctrl.selectedItem = item;
       this.ctrl.orderingPanelVisible = true;
     });
-
-    this.$scope.$on('open-deploy-image-panel', () => {
-      let cb = this.ctrl.onDeployImageSelected();
-      if (cb) {
-        cb();
-      }
-    });
-
-    this.$scope.$on('open-from-file-panel', () => {
-      let cb = this.ctrl.onFromFileSelected();
-      if (cb) {
-        cb();
-      }
-    });
   }
 
   public $onDestroy() {

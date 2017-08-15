@@ -81,4 +81,12 @@ export class HomePageController {
     this.GuidedTourService.startTour(this.tourConfig.steps);
     return true;
   };
+
+  public onDeployImageSelected () {
+    alert("Deploy Image");
+  }
+
+  public onFromFileSelected () {
+    alert("Import YAML");
+  }
 }

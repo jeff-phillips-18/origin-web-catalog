@@ -148,14 +148,6 @@ export class ServicesViewController implements angular.IController {
     this.$scope.$emit('open-overlay-panel', item);
   };
 
-  public deployImageClicked = () => {
-    this.$scope.$emit('open-deploy-image-panel');
-  };
-
-  public fromFileClicked = () => {
-    this.$scope.$emit('open-from-file-panel');
-  };
-
   private filterByCategory(category: string, subCategory: string, updateSubCategories: boolean) {
     let categoryObj: any;
     let subCategoryObj: any;

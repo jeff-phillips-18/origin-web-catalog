@@ -7,11 +7,11 @@
       <h1>Browse Catalog</h1>
       <!-- TODO:  make it so add-other links only appear if cb exists -->
       <ul class="add-other">
-        <li>
-          <a href="" ng-click="$ctrl.deployImageClicked()">Deploy Image</a>
+        <li ng-if="$ctrl.onDeployImageSelected">
+          <a href="" ng-click="$ctrl.onDeployImageSelected()">Deploy Image</a>
         </li>
-        <li>
-          <a href="" ng-click="$ctrl.fromFileClicked()">Import <span class="import-file-types">YAML / JSON</span></a>
+        <li ng-if="$ctrl.onFromFileSelected">
+          <a href="" ng-click="$ctrl.onFromFileSelected()">Import <span class="import-file-types">YAML / JSON</span></a>
         </li>
       </ul>
     </div>

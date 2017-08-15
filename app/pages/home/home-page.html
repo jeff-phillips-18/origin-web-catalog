@@ -8,7 +8,7 @@
     </div>
   </landingheader>
   <landingbody>
-    <services-view catalog-items="$ctrl.catalogItems" base-project-url="{{$ctrl.baseProjectUrl}}"></services-view>
+    <services-view catalog-items="$ctrl.catalogItems" base-project-url="{{$ctrl.baseProjectUrl}}" on-deploy-image-selected="$ctrl.onDeployImageSelected" on-from-file-selected="$ctrl.onFromFileSelected"></services-view>
   </landingbody>
   <landingside>
     <projects-summary start-tour="$ctrl.tourConfig.enabled ? $ctrl.startGuidedTour : undefined" catalog-items="$ctrl.catalogItems" base-project-url="{{$ctrl.baseProjectUrl}}" projects-url="{{$ctrl.projectsUrl}}"></projects-summary>

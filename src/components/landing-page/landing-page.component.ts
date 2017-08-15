@@ -3,9 +3,7 @@ import {LandingPageController} from './landing-page.controller';
 export const landingPage: angular.IComponentOptions = {
   bindings: {
     baseProjectUrl: '@',
-    onTemplateSelected: '&',
-    onDeployImageSelected: '&',
-    onFromFileSelected: '&'
+    onTemplateSelected: '&'
   },
   controller: LandingPageController,
   template: require('./landing-page.html'),
